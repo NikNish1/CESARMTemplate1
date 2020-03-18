@@ -89,7 +89,7 @@
         }
     },
     "variables": {
-      "BaseURL": "https://raw.githubusercontent.com/SETOGitHub/ECARMVersionUpgrade/mohussai/",
+      "BaseURL": "https://github.com/Durga-96/CESARMTemplate1/master",
       "configurationFunction": "UpdateLCMforAAPull.ps1\\ConfigureLCMforAAPull",
       "modulesUrl": "[concat(variables('BaseURL'),'all-scripts/UpdateLCMforAAPull.zip')]"
     },
