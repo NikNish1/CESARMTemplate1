@@ -61,7 +61,7 @@
   "variables": {
 
      "branch": "master",
-    "scriptsURL": "[concat('https://github.com/Durga-96/CESARMTemplate1/',variables('branch'),'/all-scripts/')]",
+    "scriptsURL": "[concat('https://raw.githubusercontent.com/Durga-96/CESARMTemplate1/',variables('branch'),'/all-scripts/')]",
 
     "IISDeployzip": "Deploy-WebServer.ps1.zip",
 
