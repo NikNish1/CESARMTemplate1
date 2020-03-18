@@ -306,8 +306,8 @@
      "branch": "master",
     "scriptsURL": "[concat('https://github.com/Durga-96/CESARMTemplate1/',variables('branch'),'/all-scripts/')]",
     "nestedURL": "[concat('https://github.com/Durga-96/CESARMTemplate1/',variables('branch'),'/all-nested/')]",
-    "availabilitySetName": "[parameters('AvailabilitySet')]"
-
+    "availabilitySetName": "[parameters('AvailabilitySet')]",
+    
     "DomainJoinzip": "DomainJoin.ps1.zip",
     "formatDiskszip": "FormatDataDisk.ps1.zip",
     "formatDiskstemplate": "template-DataDisks.json",
