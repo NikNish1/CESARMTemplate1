@@ -468,12 +468,7 @@
       "location": "[resourceGroup().location]",
       "tags": {
         "displayName": "AvailabilitySet"
-      },
-      "properties": {
-        "platformFaultDomainCount": "2",
-        "platformUpdateDomainCount": "2",
-        "managed": "true"
-      }
+      },      
     },
     {
       "type": "Microsoft.Compute/virtualMachines",
