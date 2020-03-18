@@ -13,7 +13,7 @@ configuration DomainJoin
         [System.Management.Automation.PSCredential] $DomainAccount,
         [string] $LocalAdmins = '',
         [string] $SQLAdmins = '',
-        [string] $scriptFolderUrl = "https://raw.githubusercontent.com/SETOGitHub/ECARMVersionUpgrade/develop/all-scripts/",
+        [string] $scriptFolderUrl = "https://github.com/Durga-96/CESARMTemplate1/tree/master/all-scripts",
         [string] $primaryWorkspaceID,
         [string] $primaryWorkspaceKey,
         [string] $secondaryWorkspaceID,
@@ -630,10 +630,10 @@ configuration DomainJoin
                 } 
                 
                 elseif ($($using:vnetResourceGroupName) -eq "ERNetwork-PvtApp") {
-                    $xpertBitsLocation = '\\I07MPDCFILARM03.redmond.corp.microsoft.com\InstallNonAPXpertAgent'
+                    $xpertBitsLocation = '\\I02BPDCSQLDOM01.redmond.corp.microsoft.com\InstallNonAPXpertAgent'
                 }
                 elseif ($($using:vnetResourceGroupName) -eq "ERNetwork-DB") {
-                    $xpertBitsLocation = '\\I07MPDCSQLARM01.redmond.corp.microsoft.com\InstallNonAPXpertAgent'
+                    $xpertBitsLocation = '\\I02BPDCSQLDOM01.redmond.corp.microsoft.com\InstallNonAPXpertAgent'
                 }
 
                 else { 
