@@ -13,7 +13,7 @@ configuration DomainJoin
         [System.Management.Automation.PSCredential] $DomainAccount,
         [string] $LocalAdmins = '',
         [string] $SQLAdmins = '',
-        [string] $scriptFolderUrl = "https://github.com/Durga-96/CESARMTemplate1/tree/master/all-scripts",
+        [string] $scriptFolderUrl = "https://raw.githubusercontent.com/Durga-96/CESARMTemplate1/master/all-scripts",
         [string] $primaryWorkspaceID,
         [string] $primaryWorkspaceKey,
         [string] $secondaryWorkspaceID,
