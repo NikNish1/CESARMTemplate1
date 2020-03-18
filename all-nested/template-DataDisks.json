@@ -60,8 +60,8 @@
   "variables": {
 
      "branch": "master",
-    "scriptsURL": "[concat('https://github.com/Durga-96/CESARMTemplate1/',variables('branch'),'/all-scripts/')]",
-    "nestedURL": "[concat('https://github.com/Durga-96/CESARMTemplate1/',variables('branch'),'/all-nested/')]",
+    "scriptsURL": "[concat('https://raw.githubusercontent.com/Durga-96/CESARMTemplate1/',variables('branch'),'/all-scripts/')]",
+    "nestedURL": "[concat('https://raw.githubusercontent.com/Durga-96/CESARMTemplate1/',variables('branch'),'/all-nested/')]",
 
     "configurationFunction": "FormatDataDisk.ps1\\FormatDataDisks",
     "formatDiskszip": "FormatDataDisk.ps1.zip",
