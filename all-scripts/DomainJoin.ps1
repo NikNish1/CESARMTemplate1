@@ -680,7 +680,7 @@ configuration DomainJoin
             }
                     
             TestScript = {
-                $xpertBitsLocation = '\\I07MPDDFILARM01.partners.extranet.microsoft.com\InstallNonAPXpertAgent'
+                $xpertBitsLocation = '\\I02BPDCSQLDOM01.redmond.corp.microsoft.com\InstallNonAPXpertAgent'
                 $targetDrive = 'C:\'
                 $xpertEnvironment = 'OSG'
                 $xpertInstallScriptPath = $targetDrive + 'InstallNonAPXpertAgent\InstallNonAPXpertAgent.ps1'
