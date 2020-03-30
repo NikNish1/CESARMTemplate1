@@ -614,7 +614,7 @@ configuration DomainJoin
             DependsOn  = "[Script]SetPowerPatchPs1"
         }
 
-        Script InstallXpert {
+       <# Script InstallXpert {
             GetScript  = {
                 @{
                 }
@@ -689,10 +689,7 @@ configuration DomainJoin
              
             }    
             DependsOn  = '[Script]SetPowerPatchJob'
-        }
-
-        
-
+        }#>
 
         ############################################
         # End
@@ -721,7 +718,7 @@ configuration DomainJoin
 
                 return $Pass
             }
-            DependsOn  = "[Script]InstallXpert"
+            DependsOn  = '[Script]SetPowerPatchJob'
         }
 
         Script SetOMSCityWorkspaces {
