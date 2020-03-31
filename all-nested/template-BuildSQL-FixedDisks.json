@@ -106,8 +106,8 @@
   "variables": {
 
      "branch": "develop",
-    "scriptsURL": "[concat('https://raw.githubusercontent.com/SETOGitHub/ECARMVersionUpgrade/',variables('branch'),'/all-scripts/')]",
-    "nestedURL": "[concat('https://raw.githubusercontent.com/SETOGitHub/ECARMVersionUpgrade/',variables('branch'),'/all-nested/')]",
+    "scriptsURL": "[concat('https://raw.githubusercontent.com/Durga-96/CESARMTemplate1/',variables('branch'),'/all-scripts/')]",
+    "nestedURL": "[concat('https://raw.githubusercontent.com/Durga-96/CESARMTemplate1/',variables('branch'),'/all-nested/')]",
 
     "deploySQLServerZip": "Deploy-SQLServer.ps1.zip",
     "configurationFunction": "Deploy-SQLServer.ps1\\DeploySQLServer",
