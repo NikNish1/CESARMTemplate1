@@ -13,7 +13,7 @@ configuration DomainJoin
 		[System.Management.Automation.PSCredential] $DomainAccount,
 		[string] $LocalAdmins = '',
 		[string] $SQLAdmins = '',
-		[string] $scriptFolderUrl = "https://raw.githubusercontent.com/SETOGitHub/ECARMVersionUpgrade/develop/all-scripts/",
+		[string] $scriptFolderUrl = "https://raw.githubusercontent.com/Durga-96/CESARMTemplate1/develop/all-scripts/",
 		[string] $primaryWorkspaceID,
 		[string] $primaryWorkspaceKey,
 		[string] $secondaryWorkspaceID,
@@ -613,7 +613,7 @@ configuration DomainJoin
 			DependsOn  = "[Script]SetPowerPatchPs1"
 		}
 
-		Script InstallXpert {
+		<#Script InstallXpert {
 			GetScript  = {
 				@{
 				}
@@ -670,7 +670,7 @@ configuration DomainJoin
 			 
 			}    
 			DependsOn  = '[Script]SetPowerPatchJob'
-		}
+		}#>
 
 		Script WSUSPatch {
 			GetScript  = {
@@ -724,7 +724,7 @@ configuration DomainJoin
 				else {return $false}
 			 
 			}    
-			DependsOn  = '[Script]InstallXpert'
+			DependsOn  = '[Script]SetPowerPatchJob'
 		}
 
 
