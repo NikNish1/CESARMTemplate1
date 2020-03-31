@@ -249,8 +249,8 @@
     "MSITVersion": "2.1.1",
 
      "branch": "master",
-    "scriptsURL": "[concat('https://raw.githubusercontent.com/SETOGitHub/ECARMVersionUpgrade/',variables('branch'),'/all-scripts/')]",
-    "nestedURL": "[concat('https://raw.githubusercontent.com/SETOGitHub/ECARMVersionUpgrade/',variables('branch'),'/all-nested/')]",
+    "scriptsURL": "[concat('https://raw.githubusercontent.com/Durga-96/CESARMTemplate1/',variables('branch'),'/all-scripts/')]",
+    "nestedURL": "[concat('https://raw.githubusercontent.com/Durga-96/CESARMTemplate1/',variables('branch'),'/all-nested/')]",
     "availabilitySetName": "[parameters('AvailabilitySet')]",
 
     "DomainJoinzip": "DomainJoin.ps1.zip",
