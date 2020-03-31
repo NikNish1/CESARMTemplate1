@@ -232,8 +232,8 @@
     "apiVersion": "2015-06-15",
 
      "branch": "develop",
-    "scriptsURL": "[concat('https://raw.githubusercontent.com/SETOGitHub/ECARMVersionUpgrade/',variables('branch'),'/all-scripts/')]",
-    "nestedURL": "[concat('https://raw.githubusercontent.com/SETOGitHub/ECARMVersionUpgrade/',variables('branch'),'/all-nested/')]",
+    "scriptsURL": "[concat('https://raw.githubusercontent.com/Durga-96/CESARMTemplate1/',variables('branch'),'/all-scripts/')]",
+    "nestedURL": "[concat('https://raw.githubusercontent.com/Durga-96/CESARMTemplate1/',variables('branch'),'/all-nested/')]",
     "availabilitySetName": "[parameters('AvailabilitySet')]",
 
     "DomainJoinzip": "DomainJoin.ps1.zip",
