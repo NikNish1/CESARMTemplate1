@@ -341,9 +341,6 @@
 
     "createVMtemplate": "template-SingleVM-Conf-MD.json",
     "configurePullTemplate": "template-ConfigureDscPull.json",
-    
-    "federalWorkspaceID": "0f00ef94-f80f-4165-81d6-f417b8000a15",
-    "federalWorkspaceKey": "ilCAWpSyoSUHDtvbfXoYyMRo+j9Mn/TSIaN+wgjy7BvPJCsmDb38zebOQx0qVkn1o8ZhPCApqfAzZsUCKVqTVw==",
 
     "Role": "SQL",
 
