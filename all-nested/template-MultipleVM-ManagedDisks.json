@@ -470,8 +470,7 @@
         "orgID": "[parameters('orgID')]",
         "env": "[parameters('env')]",
         "SCID": "[parameters('SCID')]",
-        "STID": "[parameters('STID')]",
-        "ApplicationName": "[parameters('ApplicationName')]"
+        "STID": "[parameters('STID')]"
       },
       "copy": {
         "name": "virtualMachineLoop",
