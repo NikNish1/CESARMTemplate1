@@ -572,6 +572,44 @@
       }
     },
     {
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[concat(parameters('vmName'),copyindex(parameters('nodeNumber')),'/', variables('vmExtensionName'))]",
+      "apiVersion": "2015-06-15",
+      "location": "[resourceGroup().location]",
+      "copy": {
+        "name": "DSCExtensionLoop",
+        "count": "[parameters('numberOfInstances')]"
+      },
+      "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'),copyindex(parameters('nodeNumber')))]"
+      ],
+      "properties": {
+        "publisher": "Microsoft.Powershell",
+        "type": "DSC",
+        "typeHandlerVersion": "2.18",
+        "autoUpgradeMinorVersion": true,
+            "DomainAccount": {
+              "UserName": "[parameters('domainJoinUserName')]",
+              "Password": "PrivateSettingsRef:DomainPassword"
+            },
+            "LocalAdmins": "[parameters('localAdmins')]",
+            "SQLAdmins": "[parameters('SQLAdmins')]",
+            "OU": "[parameters('ouPath')]",
+            "scriptFolderUrl": "[variables('scriptsURL')]",
+            "secondaryWorkspaceID": "[parameters('UserWorkspaceID')]",
+            "secondaryWorkspaceKey": "[parameters('UserWorkspaceKey')]",
+            "vnetResourceGroupName": "[parameters('vnetResourceGroup')]"
+          }
+        },
+        "protectedSettings": {
+          "Items": {
+            "LocalPassword": "[parameters('localAdminPassword')]",
+            "DomainPassword": "[parameters('domainJoinPassword')]"
+          }
+        }
+      }
+    },
+    {
       "apiVersion": "2015-01-01",
       "name": "[concat(parameters('vmName'),copyindex(1),'-FormatDataDisks')]",
       "type": "Microsoft.Resources/deployments",
