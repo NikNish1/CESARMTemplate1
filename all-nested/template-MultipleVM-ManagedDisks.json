@@ -604,10 +604,7 @@
           }
         }
       },
-      "dependsOn": [
-        "[resourceId('Microsoft.Compute/virtualMachines/extensions', concat(parameters('vmName'),copyindex(parameters('nodeNumber'))),variables('vmExtensionName'))]"
-      ]
-    },
+     
     {
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Compute/virtualMachines/extensions",
