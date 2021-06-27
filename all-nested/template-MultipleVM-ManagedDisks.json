@@ -571,40 +571,6 @@
         }
       }
     },
-   
-      
-    {
-      "apiVersion": "2015-01-01",
-      "name": "[concat(parameters('vmName'),copyindex(parameters('nodeNumber')),'-FormatDataDisks')]",
-      "type": "Microsoft.Resources/deployments",
-      "copy": {
-        "name": "FormatDataDisksLoop",
-        "count": "[parameters('numberOfInstances')]"
-      },
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[variables('FormatDisksUrl')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "vmName": {
-            "value": "[concat(parameters('vmName'),copyindex(parameters('nodeNumber')))]"
-          },
-          "DiskConfig": {
-            "value": "[parameters('DiskConfig')]"
-          },
-          "vmSize": {
-            "value": "[parameters('vmSize')]"
-          },
-          "DiskCount": {
-            "value": "[parameters('DiskCount')]"
-          },
-          "DiskSize": {
-            "value": "[parameters('DiskSize')]"
-          }
-        }
-      },   
     {
       "apiVersion": "2015-01-01",
       "name": "[concat(parameters('vmName'),copyindex(1),'-FormatDataDisks')]",
