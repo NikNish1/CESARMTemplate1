@@ -190,24 +190,8 @@
         "description": "environment tag for the Virtual Machine."
       }
     },
-    "xPertEnvironmentName": {
-      "type": "string",
-      "metadata": {
-        "description": "xPert Folder to locate servers"
-      }
-    },
-    "xPertServiceKey": {
-      "type": "string",
-      "metadata": {
-        "description": "xPert service Key"
-      }
-    },
-    "xPertRoleName": {
-      "type": "string",
-      "metadata": {
-        "description": "xPert Application Name"
-      }
-    },
+ 
+
     "SCID": {
       "defaultValue": "",
       "minLength": 1,
@@ -224,14 +208,7 @@
         "description": "STID for Application"
       }
     },
-    "ApplicationName": {
-      "defaultValue": "",
-      "minLength": 1,
-      "type": "String",
-      "metadata": {
-        "description": "Service/Application Name"
-      }
-    },
+   
     "localAdmins": {
       "type": "string",
       "defaultValue": "",
@@ -274,20 +251,7 @@
         "description": "The Organizational Unit the VM will join"
       }
     },
-    "FederalWorkspaceID": {
-      "type": "string",
-      "defaultValue": "",
-      "metadata": {
-        "description": "The Federal Workspace ID to join"
-      }
-    },
-    "FederalWorkspaceKey": {
-      "type": "string",
-      "defaultValue": "",
-      "metadata": {
-        "description": "The Federal Workspace key to use to join"
-      }
-    },
+    
     "UserWorkspaceID": {
       "type": "string",
       "defaultValue": "",
@@ -307,15 +271,13 @@
     "apiVersion": "2015-06-15",
     "MSITVersion": "2.1.2",
     "branch": "master",
-    "scriptsURL": "[concat('https://raw.githubusercontent.com/SETOGitHub/ECARMVersionUpgrade/',variables('branch'),'/all-scripts/')]",
-    "nestedURL": "[concat('https://raw.githubusercontent.com/SETOGitHub/ECARMVersionUpgrade/',variables('branch'),'/all-nested/')]",
+    "scriptsURL": "[concat('https://raw.githubusercontent.com/sonica-sai/CESARMTemplate1/',variables('branch'),'/all-scripts/')]",
+    "nestedURL": "[concat('https://raw.githubusercontent.com/sonica-sai/CESARMTemplate1/',variables('branch'),'/all-nested/')]",
     "availabilitySetName": "[parameters('AvailabilitySet')]",
-    "DomainJoinzip": "DomainJoin.ps1.zip",
     "formatDiskszip": "FormatDataDisk.ps1.zip",
     "formatDiskstemplate": "template-DataDisks.json",
     "diskarrayTemplate": "ManagedDiskArray.json",
     "SetStaticIP": "template-SetStaticIP.json",
-    "modulesUrl": "[concat(variables('scriptsURL'),variables('DomainJoinzip'))]",
     "FormatDisksUrl": "[concat(variables('nestedURL'), variables('formatDiskstemplate'))]",
     "SetStaticIPUrl": "[concat(variables('nestedURL'),variables('SetStaticIP'))]",
     "vnetSubscriptionid": "[subscription().subscriptionId]",
@@ -611,48 +573,13 @@
         }
       }
     },
-    {
-      "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(parameters('vmName'),copyindex(parameters('nodeNumber')),'/', variables('vmExtensionName'))]",
-      "apiVersion": "2015-06-15",
-      "location": "[resourceGroup().location]",
-      "copy": {
-        "name": "DSCExtensionLoop",
-        "count": "[parameters('numberOfInstances')]"
-      },
-      "dependsOn": [
-        "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'),copyindex(parameters('nodeNumber')))]"
-      ],
-      "properties": {
-        "publisher": "Microsoft.Powershell",
-        "type": "DSC",
-        "typeHandlerVersion": "2.18",
-        "autoUpgradeMinorVersion": true,
-        "settings": {
-          "ModulesUrl": "[variables('modulesUrl')]",
-          "SasToken": "",
-          "ConfigurationFunction": "DomainJoin.ps1\\DomainJoin",
-          "Properties": {
-            "Domain": "[parameters('DomainName')]",
-            "LocalAccount": {
-              "UserName": "[parameters('localAdminUserName')]",
-              "Password": "PrivateSettingsRef:localPassword"
-            },
-            "DomainAccount": {
-              "UserName": "[parameters('domainJoinUserName')]",
-              "Password": "PrivateSettingsRef:DomainPassword"
-            },
+   
             "LocalAdmins": "[parameters('localAdmins')]",
             "SQLAdmins": "[parameters('SQLAdmins')]",
             "OU": "[parameters('ouPath')]",
             "scriptFolderUrl": "[variables('scriptsURL')]",
-            "primaryWorkspaceID": "[parameters('FederalWorkspaceID')]",
-            "primaryWorkspaceKey": "[parameters('FederalWorkspaceKey')]",
             "secondaryWorkspaceID": "[parameters('UserWorkspaceID')]",
             "secondaryWorkspaceKey": "[parameters('UserWorkspaceKey')]",
-            "environmentName": "[parameters('xPertEnvironmentName')]",
-            "serviceKey": "[parameters('xPertServiceKey')]",
-            "roleName": "[parameters('xPertRoleName')]",
             "vnetResourceGroupName": "[parameters('vnetResourceGroup')]"
           }
         },
