@@ -606,12 +606,55 @@
         }
       },   
     {
+      "apiVersion": "2015-01-01",
+      "name": "[concat(parameters('vmName'),copyindex(1),'-FormatDataDisks')]",
+      "type": "Microsoft.Resources/deployments",
+      "copy": {
+        "name": "FormatDataDisksLoop",
+        "count": "[parameters('numberOfInstances')]"
+      },
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('FormatDisksUrl')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "vmName": {
+            "value": "[concat(parameters('vmName'),copyindex(1))]"
+          },
+          "DiskConfig": {
+            "value": "[parameters('DiskConfig')]"
+          },
+          "vmSize": {
+            "value": "[parameters('vmSize')]"
+          },
+          "DiskCount": {
+            "value": "[parameters('DiskCount')]"
+          },
+          "DiskSize": {
+            "value": "[parameters('DiskSize')]"
+          },
+          "NestedBaseURL": {
+            "value": "[parameters('NestedBaseURL')]"
+          },
+          "SASToken": {
+            "value": "[variables('SASToken')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines/extensions', concat(parameters('vmName'),copyindex(1)),variables('vmExtensionName'))]"
+
+      ]
+    },
+    {
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(parameters('vmName'),copyindex(parameters('nodeNumber')),'/BGInfo')]",
+      "name": "[concat(parameters('vmName'),copyindex(1),'/BGInfo')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-        "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'),copyindex(parameters('nodeNumber')))]"
+        "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'),copyindex(1))]"
       ],
       "copy": {
         "name": "BGInfoLoop",
