@@ -574,23 +574,7 @@
       }
     },
    
-            "LocalAdmins": "[parameters('localAdmins')]",
-            "SQLAdmins": "[parameters('SQLAdmins')]",
-            "OU": "[parameters('ouPath')]",
-            "scriptFolderUrl": "[variables('scriptsURL')]",
-            "secondaryWorkspaceID": "[parameters('UserWorkspaceID')]",
-            "secondaryWorkspaceKey": "[parameters('UserWorkspaceKey')]",
-            "vnetResourceGroupName": "[parameters('vnetResourceGroup')]"
-          }
-        },
-        "protectedSettings": {
-          "Items": {
-            "LocalPassword": "[parameters('localAdminPassword')]",
-            "DomainPassword": "[parameters('domainJoinPassword')]"
-          }
-        }
-      }
-    },
+      
     {
       "apiVersion": "2015-01-01",
       "name": "[concat(parameters('vmName'),copyindex(parameters('nodeNumber')),'-FormatDataDisks')]",
