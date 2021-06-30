@@ -570,9 +570,9 @@
         }
       }
     },
-    {
+     {
       "apiVersion": "2015-01-01",
-      "name": "[concat(parameters('vmName'),copyindex(1),'-FormatDataDisks')]",
+      "name": "[concat(parameters('vmName'),copyindex(parameters('nodeNumber')),'-FormatDataDisks')]",
       "type": "Microsoft.Resources/deployments",
       "copy": {
         "name": "FormatDataDisksLoop",
@@ -586,7 +586,7 @@
         },
         "parameters": {
           "vmName": {
-            "value": "[concat(parameters('vmName'),copyindex(1))]"
+            "value": "[concat(parameters('vmName'),copyindex(parameters('nodeNumber')))]"
           },
           "DiskConfig": {
             "value": "[parameters('DiskConfig')]"
@@ -599,12 +599,6 @@
           },
           "DiskSize": {
             "value": "[parameters('DiskSize')]"
-          },
-          "NestedBaseURL": {
-            "value": "[parameters('NestedBaseURL')]"
-          },
-          "SASToken": {
-            "value": "[variables('SASToken')]"
           }
         }
       }
