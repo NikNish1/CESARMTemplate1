@@ -601,7 +601,10 @@
             "value": "[parameters('DiskSize')]"
           }
         }
-      }
+      },
+       "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'),copyindex(1))]"
+      ]
     },
     {
       "apiVersion": "2015-06-15",
