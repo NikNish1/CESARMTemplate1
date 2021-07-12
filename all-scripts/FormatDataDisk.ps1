@@ -72,7 +72,10 @@ configuration FormatDataDisks
                         {
                             #check the partiation is RAW
                             if($disk.PartitionStyle -eq 'RAW')
+                           
                             {
+                            
+                                $disk | clear-disk -RemoveData -Confirm:$false
                                 Initialize-Disk -Number $vmdisk.DiskNumber -PartitionStyle GPT -Confirm -Verbose        
     
                                 #partition the new disk
