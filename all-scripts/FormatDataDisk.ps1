@@ -75,7 +75,6 @@ configuration FormatDataDisks
                            
                             {
                             
-                                $disk | clear-disk -RemoveData -Confirm:$false
                                 Initialize-Disk -Number $vmdisk.DiskNumber -PartitionStyle GPT -Confirm -Verbose        
     
                                 #partition the new disk
