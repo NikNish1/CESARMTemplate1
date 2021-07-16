@@ -197,24 +197,6 @@
       }
     },
 
-    "xPertEnvironmentName": {
-      "type": "string",
-      "metadata": {
-        "description": "xPert Folder to locate servers"
-      }
-    },
-    "xPertServiceKey": {
-      "type": "string",
-      "metadata": {
-        "description": "xPert service Key"
-      }
-    },
-    "xPertRoleName": {
-      "type": "string",
-      "metadata": {
-        "description": "xPert Application Name"
-      }
-    },
     "SCID": {
       "defaultValue": "",
       "minLength": 1,
@@ -231,14 +213,7 @@
         "description": "STID for Application"
       }
     },
-    "ApplicationName": {
-      "defaultValue": "",
-      "minLength": 1,
-      "type": "string",
-      "metadata": {
-        "description": "Service/Application Name"
-      }
-    },
+   
 
     "virtualNetwork": {
       "type": "string",
@@ -266,20 +241,6 @@
       "defaultValue": "",
       "metadata": {
         "description": "The Organizational Unit the VM will join"
-      }
-    },
-    "FederalWorkspaceID": {
-      "type": "string",
-      "defaultValue": "",
-      "metadata": {
-        "description": "The Federal Workspace ID to join"
-      }
-    },
-    "FederalWorkspaceKey": {
-      "type": "string",
-      "defaultValue": "",
-      "metadata": {
-        "description": "The Federal Workspace key to use to join"
       }
     },
     "UserWorkspaceID": {
@@ -330,7 +291,6 @@
     "autologonContent": "[concat('<AutoLogon><Password><Value>',parameters('localAdminPassword'),'</Value></Password><Domain>.</Domain><Enabled>true</Enabled><LogonCount>1</LogonCount><Username>',parameters('localAdminUserName'),'</Username></AutoLogon>')]",
     "firstLogonCommands": "<FirstLogonCommands><SynchronousCommand><CommandLine>netsh advfirewall firewall set rule group=&quot;Windows Management Instrumentation (WMI)&quot; new enable=Yes</CommandLine><Description>Update Firewall Settings</Description><Order>1</Order></SynchronousCommand><SynchronousCommand><CommandLine>logoff.exe</CommandLine><Description>Logoff</Description><Order>2</Order></SynchronousCommand></FirstLogonCommands>",
     "domainJoinOptions": 3,
-    "vmExtensionName": "DSCExtension",
     "diskCaching": "None",
     "SQLStdDisk": {
       "vmSize": "[parameters('vmSize')]",
@@ -585,56 +545,7 @@
         }
       }
     },
-    {
-      "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(parameters('vmName'),'/', variables('vmExtensionName'))]",
-      "apiVersion": "2015-06-15",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
-      ],
-      "properties": {
-        "publisher": "Microsoft.Powershell",
-        "type": "DSC",
-        "typeHandlerVersion": "2.18",
-        "autoUpgradeMinorVersion": true,
-        "settings": {
-          "WmfVersion": "5.0",
-          "ModulesUrl": "[variables('modulesUrl')]",
-          "SasToken": "",
-          "ConfigurationFunction": "DomainJoin.ps1\\DomainJoin",
-          "Properties": {
-            "Domain": "[parameters('DomainName')]",
-            "LocalAccount": {
-              "UserName": "[parameters('localAdminUserName')]",
-              "Password": "PrivateSettingsRef:localPassword"
-            },
-            "DomainAccount": {
-              "UserName": "[parameters('domainJoinUserName')]",
-              "Password": "PrivateSettingsRef:DomainPassword"
-            },
-            "localAdmins": "[parameters('localAdmins')]",
-            "SQLAdmins": "[parameters('SQLAdmins')]",
-            "OU": "[parameters('ouPath')]",
-            "scriptFolderUrl": "[variables('scriptsURL')]",
-            "primaryWorkspaceID": "[parameters('FederalWorkspaceID')]",
-            "primaryWorkspaceKey": "[parameters('FederalWorkspaceKey')]",
-            "secondaryWorkspaceID": "[parameters('UserWorkspaceID')]",
-            "secondaryWorkspaceKey": "[parameters('UserWorkspaceKey')]",
-            "environmentName": "[parameters('xPertEnvironmentName')]",
-            "serviceKey": "[parameters('xPertServiceKey')]",
-            "roleName": "[parameters('xPertRoleName')]",
-            "vnetResourceGroupName": "[parameters('vnetResourceGroup')]"
-          }
-        },
-        "protectedSettings": {
-          "Items": {
-            "LocalPassword": "[parameters('localAdminUserName')]",
-            "DomainPassword": "[parameters('domainJoinPassword')]"
-          }
-        }
-      }
-    },
+   
     {
       "apiVersion": "2015-01-01",
       "name": "[concat(parameters('vmName'),'-FormatDataDisks')]",
@@ -664,7 +575,7 @@
         }
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Compute/virtualMachines/extensions', parameters('vmName'),variables('vmExtensionName'))]"
+        "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'),copyindex(1))]"
       ]
     },
     {
