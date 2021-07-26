@@ -391,8 +391,7 @@
         "orgID": "[parameters('orgID')]",
         "env": "[parameters('env')]",
         "SCID": "[parameters('SCID')]",
-        "STID": "[parameters('STID')]",
-        "ApplicationName": "[parameters('ApplicationName')]"
+        "STID": "[parameters('STID')]"
       },
       "dependsOn": [
         "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'),'','nic1')]",
