@@ -270,7 +270,6 @@
       "metadata": {
         "description": "The City Workspace key to use to join"
       }
-    }
   },
   "variables": {
     "apiVersion": "2015-06-15",
