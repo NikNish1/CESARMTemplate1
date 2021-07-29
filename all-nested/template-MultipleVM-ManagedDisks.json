@@ -9,13 +9,18 @@
         "description": "Name for the Virtual Machine."
       }
     },
-    "AvailabilitySet": {
-      "type": "string",
-      "defaultValue": "",
-      "minLength": 3,
-      "metadata": {
-        "description": "Name for the AvailabilitySet."
-      }
+    "zone": {
+     "type": "string",
+     "metadata": {
+     "description": "Select the availability zone you would like to deploy the VM-Series into"
+       },
+      "defaultValue": "1",
+      "allowedValues": [
+        "1",
+        "2",
+				"3"
+            ]
+        },
     },
     "numberOfInstances": {
       "type": "int",
