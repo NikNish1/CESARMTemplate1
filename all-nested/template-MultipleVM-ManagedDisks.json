@@ -9,19 +9,7 @@
         "description": "Name for the Virtual Machine."
       }
     },
-    "zone": {
-     "type": "string",
-     "metadata": {
-     "description": "Select the availability zone you would like to deploy the VM-Series into"
-       },
-      "defaultValue": "1",
-      "allowedValues": [
-        "1",
-        "2",
-				"3"
-            ]
-        },
-    },
+   
     "numberOfInstances": {
       "type": "int",
       "defaultValue": 1,
